@@ -1,0 +1,3 @@
+@extends('layout')
+@section('title', 'Daftar Petugas')
+@section('content')<section class="card" style="max-width:520px;margin:auto"><h1>Buat akun petugas</h1><form method="POST" action="{{ route('register.store') }}">@csrf<label>Nama</label><input name="name" value="{{ old('name') }}" required>@error('name')<p class="error">{{ $message }}</p>@enderror<label>Email</label><input type="email" name="email" value="{{ old('email') }}" required>@error('email')<p class="error">{{ $message }}</p>@enderror<label>Kata sandi</label><input type="password" name="password" required>@error('password')<p class="error">{{ $message }}</p>@enderror<label>Ulangi kata sandi</label><input type="password" name="password_confirmation" required><button>Daftar</button></form></section>@endsection

@@ -1,0 +1,6 @@
+@extends('layout')
+@section('title', 'Kelola Laporan')
+@section('content')<section class="card"><div class="actions" style="justify-content:space-between"><div><p class="muted">PANEL PETUGAS</p><h1>Daftar laporan banjir</h1></div><a class="button" href="{{ route('petugas.laporan.create') }}">Tambah Laporan</a></div>
+<div style="overflow-x:auto"><table><thead><tr><th>Foto</th><th>Pelapor</th><th>Lokasi</th><th>Tinggi air</th><th>Status</th><th>Aksi</th></tr></thead><tbody>
+@forelse($laporan as $item)<tr><td>@if($item->foto)<img class="thumb" src="{{ asset('storage/'.$item->foto) }}" alt="Foto banjir">@else—@endif</td><td>{{ $item->nama_pelapor }}<br><span class="muted">{{ $item->no_hp }}</span></td><td>{{ $item->lokasi }}<br><span class="muted">Kec. {{ $item->kecamatan }}</span></td><td>{{ $item->tinggi_air }} cm</td><td>{{ $item->status }}</td><td><div class="actions"><a href="{{ route('petugas.laporan.show', $item) }}">Detail</a><a href="{{ route('petugas.laporan.edit', $item) }}">Edit</a><form method="POST" action="{{ route('petugas.laporan.destroy', $item) }}" onsubmit="return confirm('Hapus laporan ini?')">@csrf @method('DELETE')<button class="danger">Hapus</button></form></div></td></tr>
+@empty<tr><td colspan="6" class="muted">Belum ada laporan.</td></tr>@endforelse</tbody></table></div><div>{{ $laporan->links() }}</div></section>@endsection
