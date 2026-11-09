@@ -1,0 +1,8 @@
+{
+    "UserManagement": true,
+    "Pendaftarancomposer": true,
+    "DumpAutoload": true,
+    "Pendaftaran": true,
+    "Buku": true,
+    "Peminjaman": true
+}
